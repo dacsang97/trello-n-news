@@ -1,27 +1,17 @@
 import React, { useState } from 'react'
-import LoginButton from '../src/components/LoginButton'
-import Daily from '../src/utils/News'
+import DefaultLayout from '../src/layout/Default'
+import { Button, Paper } from '../src/components/atoms'
 
 export default () => {
   const [count, setCount] = useState(0)
-  const getData = () => {
-    // Trello.instance.listCards('5bd68f65526cab83406b19be').then(res => {
-    //   console.log(res)
-    // })
-    Daily.instance.publications().then(res => {
-      console.log(res)
-    })
-  }
   return (
-    <React.Fragment>
+    <DefaultLayout>
       <h1>Counter: {count}</h1>
-      <button type="button" onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-      <button type="button" onClick={getData}>
-        Log Token
-      </button>
-      <LoginButton />
-    </React.Fragment>
+      <Paper>
+        <Button invert onClick={() => setCount(count + 1)}>
+          Click me
+        </Button>
+      </Paper>
+    </DefaultLayout>
   )
 }
