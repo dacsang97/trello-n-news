@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 let TOKEN = null
 
 export const login = (callback, err) => {
@@ -30,7 +32,15 @@ export class Trello {
       throw new Error('Cannot construct singleton')
     }
 
-    this._type = new Date()
+    this._api = axios.create({
+      baseURL: 'https://api.trello.com/1/',
+      params: {
+        key: this.API_KEY,
+        token: TOKEN,
+        member: true,
+        member_fields: 'fullname,avatarUrl,username',
+      },
+    })
   }
 
   static get instance() {
@@ -39,5 +49,21 @@ export class Trello {
     }
 
     return this[singleton]
+  }
+
+  boards() {
+    return this._api.get('members/me/boards')
+  }
+
+  boardMembers(boardId) {
+    return this._api.get(`boards/${boardId}/memberships`)
+  }
+
+  boardLists(boardId) {
+    return this._api.get(`boards/${boardId}/lists`)
+  }
+
+  listCards(listId) {
+    return this._api.get(`lists/${listId}/cards`)
   }
 }
