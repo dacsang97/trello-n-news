@@ -1,23 +1,11 @@
 import React from 'react'
+import { login } from '../utils/TrelloAPI'
 
 export default () => {
   const onClick = () => {
-    if (window && window.Trello) {
-      window.Trello.authorize({
-        type: 'popup',
-        name: 'Trello & News',
-        scope: {
-          read: 'true',
-        },
-        expiration: 'never',
-        success(result) {
-          console.log(result)
-        },
-        error() {
-          console.log('error')
-        },
-      })
-    }
+    login(() => {
+      console.log('Login Success')
+    })
   }
   return (
     <button type="button" onClick={onClick}>
