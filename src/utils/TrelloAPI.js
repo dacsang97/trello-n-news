@@ -13,7 +13,7 @@ export const login = (callback, err) => {
       expiration: 'never',
       success() {
         TOKEN = window.localStorage.getItem('trello_token')
-        if (callback) callback()
+        if (callback) callback(TOKEN)
       },
       error: err,
     })
@@ -21,6 +21,10 @@ export const login = (callback, err) => {
 }
 
 export const getToken = () => TOKEN
+
+export const setToken = token => {
+  TOKEN = token
+}
 
 const singleton = Symbol('singleton')
 const singletonEnforcer = Symbol('singletonEnforcer')
@@ -49,6 +53,10 @@ export class Trello {
     }
 
     return this[singleton]
+  }
+
+  me() {
+    return this._api.get('members/me')
   }
 
   boards() {

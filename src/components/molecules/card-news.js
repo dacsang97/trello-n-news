@@ -88,7 +88,9 @@ export default ({ title, image, posts }) => (
       <ul>
         {posts.map(post => (
           <li key={post.id}>
-            <a href={post.url}>{post.title}</a>
+            <a target="_blank" rel="noopener noreferrer" href={post.url}>
+              {post.title}
+            </a>
           </li>
         ))}
       </ul>

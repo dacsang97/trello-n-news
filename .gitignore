@@ -138,5 +138,7 @@ $RECYCLE.BIN/
 
 out/
 
+build
+
 
 # End of https://www.gitignore.io/api/node,code,macos,windows

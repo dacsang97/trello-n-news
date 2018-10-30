@@ -16,7 +16,7 @@ export default class MyDocument extends Document {
         <Head>
           <link
             rel="stylesheet"
-            href="//cdn.jsdelivr.net/gh/dmhendricks/bootstrap-grid-css@4.1.3/dist/css/bootstrap-grid.min.css"
+            href="https://cdn.jsdelivr.net/gh/dmhendricks/bootstrap-grid-css@4.1.3/dist/css/bootstrap-grid.min.css"
           />
           <link
             rel="stylesheet"
@@ -29,8 +29,14 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js" />
-          <script src="https://api.trello.com/1/client.js?key=be962f2b3d8d5d9767faa7be938423e0" />
+          <script
+            nonce="jQu3ry"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"
+          />
+          <script
+            nonce="tr3110"
+            src="https://api.trello.com/1/client.js?key=be962f2b3d8d5d9767faa7be938423e0"
+          />
         </body>
       </html>
     )
