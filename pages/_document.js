@@ -13,7 +13,19 @@ export default class MyDocument extends Document {
   render() {
     return (
       <html lang="vi">
-        <Head>{this.props.styleTags}</Head>
+        <Head>
+          <link
+            rel="stylesheet"
+            href="//cdn.jsdelivr.net/gh/dmhendricks/bootstrap-grid-css@4.1.3/dist/css/bootstrap-grid.min.css"
+          />
+          <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+            integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+            crossOrigin="anonymous"
+          />
+          {this.props.styleTags}
+        </Head>
         <body>
           <Main />
           <NextScript />

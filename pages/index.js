@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import DefaultLayout from '../src/layout/Default'
-import { Button, Paper } from '../src/components/atoms'
+import { Trello, News } from '../src/components/organisms'
 
-export default () => {
-  const [count, setCount] = useState(0)
-  return (
-    <DefaultLayout>
-      <h1>Counter: {count}</h1>
-      <Paper>
-        <Button invert onClick={() => setCount(count + 1)}>
-          Click me
-        </Button>
-      </Paper>
-    </DefaultLayout>
-  )
-}
+export default () => (
+  <DefaultLayout>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-7">
+          <Trello />
+        </div>
+        <div className="col-md-5">
+          <News />
+        </div>
+      </div>
+    </div>
+  </DefaultLayout>
+)
