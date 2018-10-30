@@ -1,6 +1,6 @@
 import React from 'react'
-import DefaultLayout from '../src/layout/Default'
-import { Trello, News } from '../src/components/organisms'
+import DefaultLayout from '../layout/Default'
+import { Trello, News } from '../components/organisms'
 
 export default () => (
   <DefaultLayout>

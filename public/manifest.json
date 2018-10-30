@@ -18,7 +18,7 @@
     "newtab": "index.html"
   },
   "permissions": ["storage", "alarms", "topSites"],
-  "content_security_policy": "default-src * ; script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://api.trello.com data: chrome-extension-resource:; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://use.fontawesome.com;",
+  "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk=' https://cdnjs.cloudflare.com https://api.trello.com; object-src 'self'",
   "offline_enabled": true,
   "optional_permissions": ["identity"],
   "version": "1.0.0"

@@ -5,10 +5,10 @@
   "author": "Evan N <dacsang97@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "bundle": "next build && next export && node scripts/bundle"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "husky": {
     "hooks": {
@@ -22,6 +22,12 @@
       "git add"
     ]
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
@@ -31,12 +37,11 @@
     "next": "^7.0.2",
     "react": "^16.7.0-alpha.0",
     "react-dom": "^16.7.0-alpha.0",
+    "react-scripts": "^2.1.0",
     "styled-components": "^4.0.2"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.8.0",
-    "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.14.0",
