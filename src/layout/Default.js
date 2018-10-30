@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
   }
   html,
   body {
-    background-color: #fff;
+    background-color: #fafafa;;
     color: #111;
   }
   ::selection {
@@ -143,15 +143,6 @@ const GlobalStyle = createGlobalStyle`
   }
   .tc {
     text-align: center;
-  }
-  .row {
-    display: flex;
-    align-items: center;
-    margin: 0 -1.5rem;
-  }
-  .column {
-    flex: 1;
-    padding: 0 1.5rem;
   }
   .display-mobile {
     display: none;
@@ -314,7 +305,9 @@ const GlobalStyle = createGlobalStyle`
 
 export default ({ children }) => (
   <React.Fragment>
-    {children}
-    <GlobalStyle />
+    <div className="bootstrap-wrapper">
+      {children}
+      <GlobalStyle />
+    </div>
   </React.Fragment>
 )
