@@ -1,12 +1,26 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react'
 import { H1 } from '../atoms/heading'
+import { UnauthorizeTrello, TrelloContent } from '../molecules'
+import { setToken } from '../../utils/TrelloAPI'
 
-import { LoginTrello } from '../molecules'
+export default () => {
+  const [token, saveToken] = useState('')
 
-export default () => (
-  <div>
-    <H1>Trello</H1>
-    <LoginTrello />
-  </div>
-)
+  useEffect(
+    () => {
+      if (window && window.localStorage) {
+        const trelloToken = window.localStorage.getItem('trello_token')
+        saveToken(trelloToken)
+        setToken(trelloToken)
+      }
+    },
+    ['token'],
+  )
+
+  return (
+    <div>
+      <H1>Trello</H1>
+      {token ? <TrelloContent /> : <UnauthorizeTrello saveToken={saveToken} />}
+    </div>
+  )
+}

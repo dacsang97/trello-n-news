@@ -1,17 +1,26 @@
 import React from 'react'
+import styled from 'styled-components'
 import DefaultLayout from '../layout/Default'
 import { Trello, News } from '../components/organisms'
+
+const Col = styled.div`
+  @media (min-width: 768px) {
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: scroll;
+  }
+`
 
 export default () => (
   <DefaultLayout>
     <div className="container-fluid">
       <div className="row">
-        <div className="col-md-7">
+        <Col className="col-md-7">
           <Trello />
-        </div>
-        <div className="col-md-5">
+        </Col>
+        <Col className="col-md-5">
           <News />
-        </div>
+        </Col>
       </div>
     </div>
   </DefaultLayout>
