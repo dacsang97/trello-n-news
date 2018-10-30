@@ -4,21 +4,21 @@
   "short_name": "TreNews",
   "description": "Trello & News extensions for Chrome",
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
   },
   "browser_action": {
     "default_icon": {
-      "16": "icons/icon16.png",
-      "32": "icons/icon32.png"
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
     }
   },
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
   "permissions": ["storage", "alarms", "topSites"],
-  "content_security_policy": "script-src 'self' 'sha256-h22TgU8yexfKbb8Q2LveZvc2ymKCR1aeFq3EJtHlNtA=' 'sha256-u0EYX/2po2DZ1LjfJWA02LtCO10ui0ZJk5lRTCR4rMk=' 'sha256-u0EYX/2po2DZ1LjfJWA02LtCO10ui0ZJk5lRTCR4rMk=' https://www.google-analytics.com https://storage.googleapis.com https://cdnjs.cloudflare.com https://api.trello.com https://cdn.jsdelivr.net; object-src 'self'",
+  "content_security_policy": "default-src * ; script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://api.trello.com data: chrome-extension-resource:; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://use.fontawesome.com;",
   "offline_enabled": true,
   "optional_permissions": ["identity"],
   "version": "1.0.0"
