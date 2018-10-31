@@ -1,5 +1,7 @@
 # Trello & News
 
+![image](https://lh3.googleusercontent.com/_T45xXPeY6XzZ67h1sFr2mQfN09n7_z7CaYG6YdJWsfCkzU-FhxuOXPojg2QDhHcvck_c3LLrw=w640-h400-e365)
+
 ## Introduction
 
 TreNews (Trello & News) is a website, chrome extension. It is designed to help you to focus on your work on Trello, daily gathers the latest dev & tech posts in your new tab.
