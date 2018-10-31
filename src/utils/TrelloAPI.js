@@ -71,6 +71,10 @@ export class Trello {
     return this._api.get(`boards/${boardId}/lists`)
   }
 
+  boardCards(boardId) {
+    return this._api.get(`boards/${boardId}/cards`)
+  }
+
   listCards(listId) {
     return this._api.get(`lists/${listId}/cards`)
   }
