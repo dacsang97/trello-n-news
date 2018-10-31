@@ -1,8 +1,24 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 import { Select, Avatar } from '../atoms'
 import { Trello } from '../../utils/TrelloAPI'
 import TrelloUser from './trello-user'
 import TrelloCardList from './trello-card-list'
+
+const Title = styled.div`
+  text-transform: uppercase;
+  color: #0076ff;
+  font-weight: 300;
+  font-size: 1.2rem;
+  margin: 0 0 10px;
+`
+
+const CustomRow = styled.div.attrs({
+  className: 'row',
+})`
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+`
 
 export default () => {
   const [boards, setBoards] = useState([])
@@ -50,27 +66,40 @@ export default () => {
   )
 
   return (
-    <div className="container-fluid">
-      <div className="row">{me && <TrelloUser user={me} />}</div>
+    <React.Fragment>
       <div className="row">
+        <div className="col-md-6">{me && <TrelloUser user={me} />}</div>
         <div className="col-md-6">
-          <Select selected={currentBoard} options={boards} onChange={onChangeBoard} />
+          <div style={{ float: 'right' }}>
+            <Select selected={currentBoard} options={boards} onChange={onChangeBoard} />
+          </div>
         </div>
-        <div className="col-md-6">
+      </div>
+      <CustomRow>
+        <div className="col-md-12">
+          <Title>Members</Title>
+        </div>
+        <div className="col-md-12">
           {members && (
             <div>
               {members.map(member => (
-                <Avatar key={member.id} src={`${member.member.avatarUrl}/50.png`} />
+                <Avatar
+                  key={member.id}
+                  name={member.member.username}
+                  src={`${member.member.avatarUrl}/50.png`}
+                  size={32}
+                />
               ))}
             </div>
           )}
         </div>
-      </div>
+      </CustomRow>
       <div className="row">
         <div className="col">
+          <Title>List</Title>
           <TrelloCardList cards={boardCards} lists={boardLists} user={me} />
         </div>
       </div>
-    </div>
+    </React.Fragment>
   )
 }

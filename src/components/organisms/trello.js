@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { H1 } from '../atoms/heading'
-import { UnauthorizeTrello, TrelloContent } from '../molecules'
+import { UnauthorizeTrello, TrelloContent, Nav } from '../molecules'
 import { setToken } from '../../utils/TrelloAPI'
 
 export default () => {
@@ -19,8 +18,8 @@ export default () => {
 
   return (
     <div>
-      <H1>Trello</H1>
-      {token ? <TrelloContent /> : <UnauthorizeTrello saveToken={saveToken} />}
+      <Nav>Trello</Nav>
+      <div>{token ? <TrelloContent /> : <UnauthorizeTrello saveToken={saveToken} />}</div>
     </div>
   )
 }

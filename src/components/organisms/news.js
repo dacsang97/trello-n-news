@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import groupBy from 'lodash.groupby'
 import differenceInMilliseconds from 'date-fns/difference_in_milliseconds'
-import { H1 } from '../atoms/heading'
-import { ListCardNews } from '../molecules'
+import { ListCardNews, Nav } from '../molecules'
 import News from '../../utils/News'
 
 export default () => {
@@ -45,7 +44,7 @@ export default () => {
 
   return (
     <div>
-      <H1>News</H1>
+      <Nav>News</Nav>
       {posts.length === 0 ? (
         <p>Loading</p>
       ) : (

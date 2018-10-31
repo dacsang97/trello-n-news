@@ -42,7 +42,7 @@ export class Trello {
         key: this.API_KEY,
         token: TOKEN,
         member: true,
-        member_fields: 'fullname,avatarUrl,username',
+        member_fields: 'fullname,avatarUrl,avatarHash,username',
       },
     })
   }
