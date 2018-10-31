@@ -2,70 +2,104 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Select, Avatar } from '../atoms'
 import { Trello } from '../../utils/TrelloAPI'
+import TrelloUser from './trello-user'
+import TrelloCardList from './trello-card-list'
 
-const User = styled.div`
-  display: flex;
-  align-items: center;
+const Title = styled.div`
+  text-transform: uppercase;
+  color: #0076ff;
+  font-weight: 300;
+  font-size: 1.2rem;
+  margin: 0 0 10px;
+`
 
-  img {
-    margin-left: 10px;
-    margin-right: 5px;
-  }
+const CustomRow = styled.div.attrs({
+  className: 'row',
+})`
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 `
 
 export default () => {
   const [boards, setBoards] = useState([])
-  const setCurrentBoard = useState(null)[1]
+  const [currentBoard, setCurrentBoard] = useState('')
+  const [boardCards, setBoardCards] = useState([])
+  const [boardLists, setBoardLists] = useState([])
   const [members, setMembers] = useState(null)
   const [me, setMe] = useState(null)
   const onChangeBoard = id => {
     setCurrentBoard(id)
+    if (window && window.localStorage) {
+      window.localStorage.setItem('current_board', id)
+    }
     Trello.instance.boardMembers(id).then(res => {
       setMembers(res.data)
+    })
+    Trello.instance.boardLists(id).then(res => {
+      setBoardLists(res.data)
+    })
+    Trello.instance.boardCards(id).then(res => {
+      setBoardCards(res.data)
     })
   }
   useEffect(
     () => {
       Trello.instance.boards().then(res => {
         setBoards(res.data)
-        if (res.data[0] && res.data[0].id) onChangeBoard(res.data[0].id)
+        let firstId = null
+        let currentId = null
+        if (res.data[0] && res.data[0].id) firstId = res.data[0].id
+        if (window && window.localStorage) {
+          currentId = window.localStorage.getItem('current_board')
+        }
+        if (currentId) {
+          onChangeBoard(currentId)
+        } else if (firstId) {
+          onChangeBoard(firstId)
+        }
       })
       Trello.instance.me().then(res => {
         setMe(res.data)
       })
     },
-    ['boards', 'currentBoard', 'me'],
+    ['boards', 'currentBoard', 'me', 'boardCards', 'boardLists', 'members'],
   )
 
   return (
-    <div className="container-fluid">
+    <React.Fragment>
       <div className="row">
-        {me && (
-          <React.Fragment>
-            <div className="col-md-12">
-              <User>
-                Hello, <Avatar src={`${me.avatarUrl}/50.png`} size={32} />
-                <strong>{me.fullName}</strong>
-              </User>
-            </div>
-            <hr />
-          </React.Fragment>
-        )}
-      </div>
-      <div className="row">
+        <div className="col-md-6">{me && <TrelloUser user={me} />}</div>
         <div className="col-md-6">
-          <Select options={boards} onChange={onChangeBoard} />
+          <div style={{ float: 'right' }}>
+            <Select selected={currentBoard} options={boards} onChange={onChangeBoard} />
+          </div>
         </div>
-        <div className="col-md-6">
+      </div>
+      <CustomRow>
+        <div className="col-md-12">
+          <Title>Members</Title>
+        </div>
+        <div className="col-md-12">
           {members && (
             <div>
               {members.map(member => (
-                <Avatar key={member.id} src={`${member.member.avatarUrl}/50.png`} />
+                <Avatar
+                  key={member.id}
+                  name={member.member.username}
+                  src={`${member.member.avatarUrl}/50.png`}
+                  size={32}
+                />
               ))}
             </div>
           )}
         </div>
+      </CustomRow>
+      <div className="row">
+        <div className="col">
+          <Title>List</Title>
+          <TrelloCardList cards={boardCards} lists={boardLists} user={me} />
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   )
 }

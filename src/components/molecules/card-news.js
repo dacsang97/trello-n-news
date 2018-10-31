@@ -1,44 +1,40 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Paper } from '../atoms'
+import { FieldSet } from '../atoms'
 
-const CardWrapper = styled(Paper)`
-  position: relative;
-  border-radius: 5px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(234, 234, 234);
-  border-image: initial;
-  overflow: hidden;
+const CardWrapper = styled(FieldSet)`
   margin-bottom: 15px;
-  padding: 0;
-  .content {
-    background-color: white;
-    border-radius: 5px;
-    padding: 20px;
-
+  transition: box-shadow 0.2s ease-in;
+  :hover {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 5px 0px;
+  }
+  .header {
     h1 {
       color: rgb(0, 0, 0);
       font-size: 20px;
       font-weight: 500;
-      margin: 0px 0px 14px;
       display: flex;
       transition: color 0.2s ease-in;
-
-      .publication-img {
-        width: 32px;
-        height: 32px;
-        border-radius: 16px;
-        margin-right: 10px;
-      }
     }
-    &:hover h1 {
+    .publication-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      margin-right: 10px;
+    }
+  }
+  &:hover {
+    .header > h1 {
       color: rgb(6, 125, 247);
     }
+  }
+  .content {
     ul {
       list-style-type: none;
       margin-left: 15px;
       padding: 0px;
+      margin-block-start: 0px;
+      margin-block-end: 0px;
       li {
         font-size: 14px;
         line-height: 24px;
@@ -80,11 +76,13 @@ const CardWrapper = styled(Paper)`
 
 export default ({ title, image, posts }) => (
   <CardWrapper>
-    <div className="content">
+    <div className="header">
       <h1>
         <img className="publication-img" src={image} alt={title} />
         {title}
       </h1>
+    </div>
+    <div className="content">
       <ul>
         {posts.map(post => (
           <li key={post.id}>

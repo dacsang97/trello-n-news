@@ -5,7 +5,6 @@ let TOKEN = null
 export const login = (callback, err) => {
   if (window && window.Trello) {
     window.Trello.authorize({
-      type: 'popup',
       name: 'Trello & News',
       scope: {
         read: 'true',
@@ -42,7 +41,7 @@ export class Trello {
         key: this.API_KEY,
         token: TOKEN,
         member: true,
-        member_fields: 'fullname,avatarUrl,username',
+        member_fields: 'fullname,avatarUrl,avatarHash,username',
       },
     })
   }
@@ -69,6 +68,10 @@ export class Trello {
 
   boardLists(boardId) {
     return this._api.get(`boards/${boardId}/lists`)
+  }
+
+  boardCards(boardId) {
+    return this._api.get(`boards/${boardId}/cards`)
   }
 
   listCards(listId) {

@@ -71,9 +71,9 @@ const SelectWrapper = styled.div`
   }
 `
 
-export default ({ options, onChange }) => (
+export default ({ options, selected, onChange }) => (
   <SelectWrapper>
-    <select onChange={e => onChange(e.target.value)}>
+    <select onChange={e => onChange(e.target.value)} value={selected}>
       {options.map(option => (
         <option key={option.id} value={option.id}>
           {option.name}
