@@ -1,6 +1,6 @@
 # Trello & News
 
-![image](https://lh3.googleusercontent.com/_T45xXPeY6XzZ67h1sFr2mQfN09n7_z7CaYG6YdJWsfCkzU-FhxuOXPojg2QDhHcvck_c3LLrw=w640-h400-e365)
+<p align="center"><a href="https://chrome.google.com/webstore/detail/trello-n-news/hbnkimpbeobpklinjhplgmjonnnnfgme" target="_blank" rel="noopener noreferrer"><img width="100%" src="https://lh3.googleusercontent.com/_T45xXPeY6XzZ67h1sFr2mQfN09n7_z7CaYG6YdJWsfCkzU-FhxuOXPojg2QDhHcvck_c3LLrw=w640-h400-e365" alt="Image"></a></p>
 
 ## Introduction
 
