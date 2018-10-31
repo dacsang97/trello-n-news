@@ -5,6 +5,7 @@ let TOKEN = null
 export const login = (callback, err) => {
   if (window && window.Trello) {
     window.Trello.authorize({
+      type: 'popup',
       name: 'Trello & News',
       scope: {
         read: 'true',
